@@ -1,6 +1,9 @@
 Class {
 	#name : 'MTMutantEvaluationResultTerminated',
 	#superclass : 'MTMutantEvaluationResult',
+	#instVars : [
+		'result'
+	],
 	#category : 'MuTalk-Model-Mutant evaluation results',
 	#package : 'MuTalk-Model',
 	#tag : 'Mutant evaluation results'
@@ -16,13 +19,15 @@ MTMutantEvaluationResultTerminated class >> canHandle: aMutant withResults: aTes
 MTMutantEvaluationResultTerminated class >> newFor: aMutant results: aTestResult producedBy: aMutantEvaluation [ 
 	^ self new
 		initializeFor: aMutant
+			results: aTestResult
 			producedBy: aMutantEvaluation;
 		yourself
 ]
 
 { #category : 'initialize-release' }
-MTMutantEvaluationResultTerminated >> initializeFor: aMutation producedBy: aMutantEvaluation [ 
+MTMutantEvaluationResultTerminated >> initializeFor: aMutation results: anError producedBy: aMutantEvaluation [ 
 	mutant := aMutation.
+	result := anError.
 	mutantEvaluation := aMutantEvaluation
 ]
 
@@ -51,7 +56,7 @@ MTMutantEvaluationResultTerminated >> printDetailedResultOn: aStream [
 
 { #category : 'accessing' }
 MTMutantEvaluationResultTerminated >> result [
-	^nil
+	^result
 ]
 
 { #category : 'browsing' }
