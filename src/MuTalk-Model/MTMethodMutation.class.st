@@ -174,7 +174,7 @@ MTMethodMutation >> runMutantStoppingOnError: aBoolean in: anEvaluation [
 		               self install.
 		               self runTestsStoppingOnError: aBoolean ] ensure: [
 			               self uninstall ] ] ]
-		on: Error
+		on: Error, Notification 
 		do: [ :error |
 			^ MTMutantEvaluationResultTerminated
 				  newFor: self
